@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: rgb(255, 214, 220);
+    }
+
+    .circle {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      margin: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: lightgray; /* Default background color */
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 182, 193, 0.8); /* Light pink background color */
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+  <title>Responsive Circles</title>
+</head>
+<body>
+  <!-- Info Modal -->
+  <div class="modal" id="infoModal">
+    <div class="modal-content">
+      <p style="color: #FF69B4;">Yuvarlaklara tıklayarak tesbih çekebilirsiniz!</p>
+    </div>
+  </div>
+
+  <!-- Circles will be dynamically generated using JavaScript -->
+  <script>
+    // Number of circles
+    const circleCount = 33;
+
+    // Show info modal on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      const infoModal = document.getElementById('infoModal');
+      infoModal.style.display = 'flex';
+
+      setTimeout(function () {
+        infoModal.style.display = 'none';
+      }, 3500); // Auto-hide after 5 seconds
+    });
+
+    // Create circles and append them to the body
+    for (let i = 1; i <= circleCount; i++) {
+      const circle = document.createElement('div');
+      circle.className = 'circle';
+      circle.setAttribute('data-index', i - 1); // Store the index as data attribute
+      circle.addEventListener('click', toggleCircle); // Add click event listener
+      document.body.appendChild(circle);
+    }
+
+    // Function to toggle the background color of a circle
+    function toggleCircle(event) {
+      const circle = event.target;
+      const currentColor = circle.style.backgroundColor || 'lightgray';
+      const newColor = currentColor === 'red' ? 'green' : 'red';
+
+      // Change background color
+      circle.style.backgroundColor = newColor;
+    }
+  </script>
+</body>
+</html>
