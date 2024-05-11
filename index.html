@@ -6,22 +6,22 @@
   <style>
     body {
       display: flex;
-      /* flex-wrap: wrap; */
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      /* min-height: 100vh; */
+      min-height: 100vh;
       margin: 0;
       background-color: rgb(255, 214, 220);
     }
 
     .circle {
-      width: 25px;
-      height: 25px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       margin: 3px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      background-color: lightgray; /* Default background color */
+      background-color: blue; /* Default background color */
     }
 
     /* Modal Styles */
@@ -81,8 +81,8 @@
     // Function to toggle the background color of a circle
     function toggleCircle(event) {
       const circle = event.target;
-      const currentColor = circle.style.backgroundColor || 'lightgray';
-      const newColor = currentColor === 'red' ? 'green' : '#aa5543';
+      const currentColor = circle.style.backgroundColor || 'blue';
+      const newColor = currentColor === 'red' ? 'green' : 'red';
 
       // Change background color
       circle.style.backgroundColor = newColor;
